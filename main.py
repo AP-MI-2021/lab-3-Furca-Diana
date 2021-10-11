@@ -79,7 +79,7 @@ def au_toate_div(l):
     :return: 1 daca numerele au acelasi numar de divizori si 0 in caz contrar
     '''
 
-    for i in l - 1:
+    for i in l :
         if numar_de_divizori(i) != numar_de_divizori(
                 i + 1):  # verific perechi de cate 2 numere alaturate daca au acelasi nr de divizori
             return 0
@@ -126,7 +126,7 @@ def test_toate_sunt_pare():
     assert toate_sunt_pare([3, 5, 7, 10]) is False
     assert toate_sunt_pare([116, 18, 12, 190, 236]) is True
     assert toate_sunt_pare([23, 45, 67, 87, 124]) is False
-    
+
 
 def get_longest_all_even(lista):
     '''
