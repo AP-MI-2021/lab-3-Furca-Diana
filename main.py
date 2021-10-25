@@ -1,21 +1,15 @@
-def is_prime(n):
+def is_prime(x):
     '''
     Determina daca un numar este prim sau nu
-    :param n: numar intreg
+    :param x: numar intreg
     :return: 1 daca numarul este prim, 0 in caz contrar
     '''
-    if n < 2:
-        return 0  # 0 si 1 nu sunt numere prime
-    elif n == 2:
-        return 1  # 2 este numar prim
-    elif n % 2 == 0:
-        return 0  # singurul numar prim par este 2, alte numere pare nu sunt prime
-    else:
-        for i in range(3, n // 2 + 1):
-            if n % i == 0:
-                return 0  # un numar prim nu are divizori
-        return 1  # daca numarul nu are niciun divizor propriu, inseamna ca e prim
-
+    if x < 2:
+        return False
+    for i in range(2, x//2 + 1):
+        if x % i == 0:
+            return False
+    return True
 
 def is_all_prime(lista):
     '''
@@ -43,8 +37,8 @@ def get_longest_all_primes(lista):
     '''
     subsecv_max = [] # lista goala
     for i in range(len(lista)):
-        for j in range(i, len(lista) + 1):  #se parcurg toate elementele listei
-            if (is_all_prime(lista[i:j])) and len(lista[i:j + 1]) > len(subsecv_max):
+        for j in range(i, len(lista)):  #se parcurg toate elementele listei
+            if (is_all_prime(lista[i:j+1])) and len(lista[i:j + 1]) > len(subsecv_max):
                 subsecv_max = lista[i:j + 1]  # se verifica daca in subsecventa toate numerele sunt prime si daca lungimea secventei gasite e una maxima
     return subsecv_max
 
@@ -94,7 +88,7 @@ def get_longest_same_div_count(l):
     '''
     subsecventa_max = []
     for i in range(len(l)):
-        for j in range(i, len(l) + 1):
+        for j in range(i, len(l)):
             if (au_toate_div(l[i:j + 1])) and len(l[i:j + 1]) > len(subsecventa_max):
                 subsecventa_max = l[i:j + 1]  #verific daca in subsecventa toate elem au acelasi numar de divizori sau nu
     return subsecventa_max
@@ -135,8 +129,8 @@ def get_longest_all_even(lista):
     '''
     subsecv_max = [] #declar o lista goala
     for i in range(len(lista)):  #parcurg elementele listei
-        for j in range(i, len(lista) + 1):
-            if (toate_sunt_pare(lista[i:j])) and len(lista[i:j + 1]) > len(subsecv_max):
+        for j in range(i, len(lista) ):
+            if (toate_sunt_pare(lista[i:j + 1])) and len(lista[i:j + 1]) > len(subsecv_max):
                 #verific daca in subsecventa toate elementele sunt pare sau nu, compar lungimile secventelor
                 subsecv_max = lista[i:j + 1]   #daca gasesc o subsecventa mai lunga decat cea curenta, o retin
     return subsecv_max
